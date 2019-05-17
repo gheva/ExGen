@@ -10,3 +10,5 @@ SUBDIRS += mathex
 SUBDIRS += apps
 SUBDIRS += exgen
 
+# vim: set noexpandtab :
+
