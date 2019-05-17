@@ -1,3 +1,6 @@
 [submodule "mk"]
 	path = mk
 	url = git@github.com:gheva/mk.git
+[submodule "src/ut"]
+	path = src/ut
+	url = git@github.com:gheva/ut.git
