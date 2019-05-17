@@ -3,6 +3,8 @@
 #include "ut/stdoutlogger.h"
 
 #include "xml/unittests/xmlnodetests.h"
+#include "svg/unittests/svgelementtests.h"
+#include "svg/unittests/svgfonttests.h"
 
 /**
   \defgroup unittests The unittests app
@@ -20,6 +22,8 @@ int main(int argc, char** argv)
   StdoutLogger logger;
   TestRunner runner(&logger);
   CALL_ADD_TO_RUNNER(XMLNodeTests, &runner);
+  CALL_ADD_TO_RUNNER(SVGElementTests, &runner);
+  CALL_ADD_TO_RUNNER(SVGFontTests, &runner);
 
   if (argc > 1)
   {
