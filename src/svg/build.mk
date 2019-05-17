@@ -13,6 +13,7 @@ DIR_OBJS += text
 DIR_OBJS += g
 DIR_OBJS += use
 DIR_OBJS += defs
+DIR_OBJS += linedtext
 DIR_SUBDIRS += unittests
 
 include $(strip ${BLDFILES})/footer.mk

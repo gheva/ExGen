@@ -5,6 +5,7 @@
 #include "xml/unittests/xmlnodetests.h"
 #include "svg/unittests/svgelementtests.h"
 #include "svg/unittests/svgfonttests.h"
+#include "svg/unittests/svglinedtexttests.h"
 
 /**
   \defgroup unittests The unittests app
@@ -24,6 +25,7 @@ int main(int argc, char** argv)
   CALL_ADD_TO_RUNNER(XMLNodeTests, &runner);
   CALL_ADD_TO_RUNNER(SVGElementTests, &runner);
   CALL_ADD_TO_RUNNER(SVGFontTests, &runner);
+  CALL_ADD_TO_RUNNER(SVGLinedTextTests, &runner);
 
   if (argc > 1)
   {

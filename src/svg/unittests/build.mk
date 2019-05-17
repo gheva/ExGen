@@ -12,6 +12,7 @@ unittests_MODULES += xml
 
 DIR_OBJS += svgelementtests
 DIR_OBJS += svgfonttests
+DIR_OBJS += svglinedtexttests
 
 include $(strip ${BLDFILES})/footer.mk
 
