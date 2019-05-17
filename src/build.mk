@@ -8,4 +8,5 @@ SUBDIRS += svg
 SUBDIRS += xgen
 SUBDIRS += mathex
 SUBDIRS += apps
+SUBDIRS += exgen
 
