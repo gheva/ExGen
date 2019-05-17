@@ -6,5 +6,6 @@ SUBDIRS += ut
 SUBDIRS += xml
 SUBDIRS += svg
 SUBDIRS += xgen
+SUBDIRS += mathex
 SUBDIRS += apps
 
