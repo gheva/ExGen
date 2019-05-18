@@ -7,6 +7,7 @@ SUBDIRS += xml
 SUBDIRS += svg
 SUBDIRS += xgen
 SUBDIRS += mathex
+SUBDIRS += cursex
 SUBDIRS += apps
 SUBDIRS += exgen
 
