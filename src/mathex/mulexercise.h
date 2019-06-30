@@ -14,6 +14,7 @@ public:
   {
     MUL_LEVEL_COUNT_BY,
     MUL_LEVEL_MUL_TABLE,
+    MUL_LEVEL_ONE_DIGIT,
   };
   MulExercise(MulLevels level);
   virtual ~MulExercise();
