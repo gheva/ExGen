@@ -27,6 +27,7 @@ private:
   svg::SVGElement* square(int x, int y, int dim);
   svg::SVGElement* countby_svg();
   svg::SVGElement* multable_svg();
+  svg::SVGElement* two_level_mul_svg();
   const mathex::MulExercise& exercise_;
   static const int SQUARE_DIM;
   static const int X_TEXT_OFFSET;

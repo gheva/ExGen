@@ -30,6 +30,8 @@ unsigned int MulDivSVG::width() const
   case MulExercise::MUL_LEVEL_COUNT_BY:
   case MulExercise::MUL_LEVEL_MUL_TABLE:
     return 540;
+  case MulExercise::MUL_LEVEL_ONE_DIGIT:
+    return 180;
   }
   return 180;
 }
@@ -40,6 +42,8 @@ unsigned int MulDivSVG::height() const
   {
   case MulExercise::MUL_LEVEL_COUNT_BY:
     return 10;
+  case MulExercise::MUL_LEVEL_ONE_DIGIT:
+    return 80;
   }
   return 20;
 }
@@ -54,6 +58,9 @@ svg::SVGElement* MulDivSVG::svg(const std::string& id)
     break;
   case MulExercise::MUL_LEVEL_MUL_TABLE:
     ret->add_child(multable_svg());
+    break;
+  case MulExercise::MUL_LEVEL_ONE_DIGIT:
+    ret->add_child(two_level_mul_svg());
     break;
   }
   return ret;
@@ -126,6 +133,43 @@ svg::SVGElement* MulDivSVG::countby_svg()
     x += SQUARE_DIM;
   }
   return ret;
+}
+
+svg::SVGElement* MulDivSVG::two_level_mul_svg()
+{
+  svg::G* g = new svg::G();
+  std::stringstream ss;
+  ss << exercise_[0];
+  ss << "  ";
+  svg::Text* t = new svg::Text(ss.str());
+  t->add_style("text-anchor", "end");
+  t->add_style("letter-spacing", "5pt");
+  font_->apply(*t);
+  t->set_location(28, 0);
+  g->add_child(t);
+  std::string op("X");
+  t = new svg::Text(op);
+  font_->apply(*t);
+  t->set_location(0, 15);
+  g->add_child(t);
+  ss.str("");
+  ss << exercise_[1];
+  t = new svg::Text(ss.str());
+  font_->apply(*t);
+  t->set_location(28, 30);
+  t->add_style("text-anchor", "end");
+  t->add_style("letter-spacing", "5pt");
+  g->add_child(t);
+
+  svg::Line* line = new svg::Line(0, 35, 30, 35);
+  line->stroke("black");
+  g->add_child(line);
+
+  line = new svg::Line(0, 60, 30, 60);
+  line->stroke("black");
+  g->add_child(line);
+
+  return g;;
 }
 
 svg::SVGElement* MulDivSVG::square(int x, int y, int dim)
