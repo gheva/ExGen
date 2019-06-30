@@ -131,7 +131,7 @@ void SVGDisplay::finalize()
   new_page();
   for (int i = 0; i < pages_.size(); ++i)
   {
-    snprintf(buffer, 1024, "%s/file_%d.svg", base_path_.c_str(), i);
+    snprintf(buffer, 1024, "%s_%d.svg", base_path_.c_str(), i);
 
     std::ofstream fs(buffer);
     if (fs.is_open())
