@@ -3,6 +3,7 @@
 
 #include "level.h"
 #include "randnum.h"
+#include <vector>
 
 namespace mathex
 {
@@ -20,14 +21,17 @@ class MultiplyBy : public xgen::Level
 {
 public:
   MultiplyBy(unsigned int left, bool mixit=false, unsigned int limit=9);
+  MultiplyBy(std::vector<unsigned int>& known);
   virtual ~MultiplyBy();
   void set_left(unsigned int left);
   virtual std::unique_ptr<xgen::Exercise> generate() override;
 private:
+  unsigned int get_left();
   RandNum rand_;
   RandNum should_mix_;
   unsigned int left_;
   bool mixit_;
+  std::vector<unsigned int>& lefts_;
 };
 
 } // namespace
