@@ -9,13 +9,14 @@ namespace mathex
 class CountBy : public xgen::Level
 {
 public:
-  CountBy();
+  CountBy(int digit=-1);
   virtual ~CountBy();
 protected:
   virtual std::unique_ptr<xgen::Exercise> generate();
 private:
   int count_;
   static int by_[];
+  int digit_;
 };
 
 } // namespace
