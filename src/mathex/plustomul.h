@@ -9,7 +9,7 @@ namespace mathex
 class PlusToMul : public xgen::Level
 {
 public:
-  PlusToMul();
+  PlusToMul(int digit=-1);
   virtual ~PlusToMul();
 protected:
   virtual std::unique_ptr<xgen::Exercise> generate();

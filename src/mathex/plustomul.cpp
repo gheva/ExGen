@@ -5,10 +5,17 @@
 namespace mathex
 {
 
-PlusToMul::PlusToMul() : count_(0), digit_(7)
+PlusToMul::PlusToMul(int digit) : count_(0)
 {
-  RandNum rand(3, 9);
-  digit_ = rand.next_int();
+  if (digit > 0)
+  {
+    digit_ = digit;
+  }
+  else
+  {
+    RandNum rand(3, 9);
+    digit_ = rand.next_int();
+  }
 }
 
 PlusToMul::~PlusToMul()
