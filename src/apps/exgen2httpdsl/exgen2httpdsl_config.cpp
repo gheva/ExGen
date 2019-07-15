@@ -15,9 +15,6 @@ static const string text_html("text/html");
 static const string headers("headers");
 static const string body("body");
 static const string response_text_resource("response_text");
-static const string index_html{
-#include "index.html.h"
-};
 
 #ifdef __cplusplus
 extern "C" {
@@ -87,9 +84,11 @@ HTTPDSL_REQUEST_STATUS_CODE do_work(httpdsl_arg* arg, void* priv)
   switch (method)
   {
   case HTTP_GET:
-    buffer = static_cast<char*>(calloc(index_html.length() + 1, sizeof(char)));
-    arg->request->add_resource(arg->request, arg->out_tag, buffer, free);
-    strcpy(buffer, index_html.c_str());
+    ret = handle_get(arg);
+    if (ret != STATUS_CODE_OK)
+    {
+      return ret;
+    }
     break;
   case HTTP_POST:
     {

@@ -6,11 +6,16 @@
 #include <vector>
 #include <sstream>
 #include <cstring>
+#include "index.html.h"
 
 using namespace std;
 using namespace exgen;
 using namespace xgen;
 using namespace mathex;
+
+static const string index_html{
+HTML_HEADER_STRING FORM_HEADER SELECT_SUBJECT " <br> " ADDITION_SELECT_LEVEL SUBTRACTION_SELECT_LEVEL ARITHMETICS_SELECT_LEVEL MULTIPLICATION_SELECT_LEVEL  " <br> " HTML_FOOTER
+};
 
 map<string, Topic*> topics{
   {"addition", new Addition},
@@ -25,6 +30,14 @@ map<string, vector<int> > count_per_subject{
   {"arithmetic", {10, 10, 10}},
   {"multiplication", {10, 10, 10}},
 };
+
+HTTPDSL_REQUEST_STATUS_CODE handle_get(httpdsl_arg* arg)
+{
+  char* buffer = static_cast<char*>(calloc(index_html.length() + 1, sizeof(char)));
+  arg->request->add_resource(arg->request, arg->out_tag, buffer, free);
+  strcpy(buffer, index_html.c_str());
+  return STATUS_CODE_OK;
+}
 
 static const string SUBJECT_PARAM_NAME("subject");
 HTTPDSL_REQUEST_STATUS_CODE handle_post(httpdsl_arg* arg)
@@ -46,14 +59,16 @@ HTTPDSL_REQUEST_STATUS_CODE handle_post(httpdsl_arg* arg)
   }
   int count(count_per_subject[subject][level_i - 1]);
   Level::exercise_list exe_list = level_obj->generate(count);
-  SVGDisplay display(600, 800, "/tmp/exercise.svg");
+  SVGDisplay display(600, 650, "/tmp/exercise.svg");
   for (int i = 0; i < count; ++i)
   {
     display.show(*(exe_list[i]));
   }
 
   stringstream ss;
+  ss << HTML_HEADER_STRING;
   display.stream(ss);
+  ss << FORM_HEADER SELECT_SUBJECT " <br> " ADDITION_SELECT_LEVEL SUBTRACTION_SELECT_LEVEL ARITHMETICS_SELECT_LEVEL MULTIPLICATION_SELECT_LEVEL  " <br> " HTML_FOOTER;
   string payload = ss.str();
 
   buffer = static_cast<char*>(calloc(payload.length() + 1, sizeof(char)));
@@ -61,7 +76,6 @@ HTTPDSL_REQUEST_STATUS_CODE handle_post(httpdsl_arg* arg)
   strcpy(buffer, payload.c_str());
   return STATUS_CODE_OK;
 }
-
 
 /* vim: set cindent sw=2 expandtab : */
 
