@@ -1,4 +1,5 @@
 #include "exgen2httpdsl_config.h"
+#include "exgen2httpdsl_generator.h"
 #include <aws/lambda-runtime/runtime.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <memory/umap_session.h>
@@ -73,6 +74,7 @@ HTTPDSL_REQUEST_STATUS_CODE do_work(httpdsl_arg* arg, void* priv)
   arg->request->set_status(arg->request, 200);
   arg->request->add_header(arg->request, Content_type.c_str(), text_html.c_str());
 
+  HTTPDSL_REQUEST_STATUS_CODE ret = STATUS_CODE_OK;
   // We were unable to add the resource
   if (stat == 0)
   {
@@ -90,16 +92,20 @@ HTTPDSL_REQUEST_STATUS_CODE do_work(httpdsl_arg* arg, void* priv)
     strcpy(buffer, index_html.c_str());
     break;
   case HTTP_POST:
-    buffer = static_cast<char*>(calloc(1024, sizeof(char)));
-    arg->request->add_resource(arg->request, arg->out_tag, buffer, free);
-    strcpy(buffer, "It's a post");
+    {
+      ret = handle_post(arg);
+      if (ret != STATUS_CODE_OK)
+      {
+        return ret;
+      }
+    }
     break;
   default:
     strcpy(buffer, "This is kinda cool");
     break;
   }
 
-  return STATUS_CODE_OK;
+  return ret;
 }
 
 HTTPDSL_REQUEST_STATUS_CODE exgen_storage_init(httpdsl_storage* module)

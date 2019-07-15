@@ -6,11 +6,22 @@ exgen2httpdsl_SHARED_MODULES += httpdsl_providers
 
 exgen2httpdsl_OBJS += exgen2httpdsl
 exgen2httpdsl_OBJS += exgen2httpdsl_config
+exgen2httpdsl_OBJS += exgen2httpdsl_generator
+
+exgen2httpdsl_MODULES += exgen_displays
+exgen2httpdsl_MODULES += mathex
+exgen2httpdsl_MODULES += cursex
+exgen2httpdsl_MODULES += xml
+exgen2httpdsl_MODULES += svg
+exgen2httpdsl_MODULES += xgen
 
 DIR_COMPILATION_FLAGS += -I$(strip ${LAMBDA_LINK_LIBS})/aws_lambda_cpp/include
 DIR_COMPILATION_FLAGS += -I$(strip ${LAMBDA_LINK_LIBS})/aws_sdk_cpp/include
 DIR_COMPILATION_FLAGS += -I$(strip ${LAMBDA_LINK_LIBS})/httpdsl/include/httpdsl
 DIR_COMPILATION_FLAGS += -I$(strip ${LAMBDA_LINK_LIBS})/httpdsl/include/providers
+DIR_COMPILATION_FLAGS += -Isrc/mathex
+DIR_COMPILATION_FLAGS += -Isrc/xgen
+DIR_COMPILATION_FLAGS += -Isrc/exgen
 
 LDFLAGS += -L$(strip ${LAMBDA_LINK_LIBS})/aws_lambda_cpp/lib
 LDFLAGS += -L$(strip ${LAMBDA_LINK_LIBS})/aws_sdk_cpp/lib64
