@@ -60,6 +60,8 @@ private:
   virtual void post_show(const xgen::Exercise& exercise);
   xml::XMLNode* new_page();
   std::string id();
+
+  std::ostream& stream(std::ostream& s);
 private:
   const std::string& base_path_;
   unsigned int width_;

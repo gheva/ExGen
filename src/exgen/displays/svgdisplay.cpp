@@ -144,6 +144,16 @@ void SVGDisplay::finalize()
   }
 }
 
+std::ostream& SVGDisplay::stream(std::ostream& s)
+{
+  new_page();
+  for (int i = 0; i < pages_.size(); ++i)
+  {
+    s << *pages_[i] << std::endl;
+  }
+  return s;
+}
+
 } // namespace
 
 /* vim: set cindent sw=2 expandtab : */
