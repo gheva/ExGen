@@ -18,17 +18,17 @@ HTML_HEADER_STRING FORM_HEADER SELECT_SUBJECT " <br> " ADDITION_SELECT_LEVEL SUB
 };
 
 map<string, Topic*> topics{
-  {"addition", new Addition},
-  {"subtraction", new Subtraction},
-  {"arithmetic", new Arithmetic},
-  {"multiplication", new Multiplication},
+  {"addition", new mathex::Addition},
+  {"subtraction", new mathex::Subtraction},
+  {"arithmetic", new mathex::Arithmetic},
+  {"multiplication", new mathex::Multiplication},
 };
 
 map<string, vector<int> > count_per_subject{
-  {"addition", {10, 10, 10}},
-  {"subtraction", {10, 10, 10}},
-  {"arithmetic", {10, 10, 10}},
-  {"multiplication", {10, 10, 10}},
+  {"addition", {12, 12, 12, 12, 12}},
+  {"subtraction", {12, 12, 12, 12, 12, 12 ,12, 12, 4}},
+  {"arithmetic", {12, 12, 12, 12, 10}},
+  {"multiplication", {10, 1, 12, 12, 12, 12, 12, 12, 12, 12, 12}},
 };
 
 HTTPDSL_REQUEST_STATUS_CODE handle_get(httpdsl_arg* arg)
@@ -57,7 +57,7 @@ HTTPDSL_REQUEST_STATUS_CODE handle_post(httpdsl_arg* arg)
   {
     return STATUS_CODE_ERROR;
   }
-  int count(count_per_subject[subject][level_i - 1]);
+  int count(count_per_subject[subject][level_i]);
   Level::exercise_list exe_list = level_obj->generate(count);
   SVGDisplay display(600, 650, "/tmp/exercise.svg");
   for (int i = 0; i < count; ++i)
