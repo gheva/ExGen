@@ -55,13 +55,14 @@ public:
     When calling show, the exercise is transfomred to svg during the call to pre_show, which will allow us to calculate the approprite location for this exercise.
     */
   virtual void show(const xgen::Exercise& exercise);
+
+  std::ostream& stream(std::ostream& s);
 private:
   virtual void pre_show(const xgen::Exercise& exercise);
   virtual void post_show(const xgen::Exercise& exercise);
   xml::XMLNode* new_page();
   std::string id();
 
-  std::ostream& stream(std::ostream& s);
 private:
   const std::string& base_path_;
   unsigned int width_;
