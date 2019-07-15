@@ -45,18 +45,18 @@
       <option value='0'>Plus minus</option> \
       <option value='1'>Subtract digits</option> \
       <option value='2'>Subtract digits from number</option> \
-      <option value='3'>Subtract 9</option> \
-      <option value='4'>Subtract 8</option> \
-      <option value='5'>Subtract 7</option> \
-      <option value='6'>Subtract 6</option> \
+      <option value='3'>Add 9 (-1)</option> \
+      <option value='4'>Add 8 (-2)</option> \
+      <option value='5'>Add 7 (-3)</option> \
+      <option value='6'>Add 6 (-4)</option> \
       <option value='7'>Subtract digit from number</option> \
       <option value='8'>very long plus and minus</option> \
     </select>"
 #define ARITHMETICS_SELECT_LEVEL "<select class='level' id='arithmetic_level' style='display:none' name='arithmetic_level'> \
       <option value='0'>Some carry</option> \
-      <option value='1'>Alternating addition and subtraction level1</option> \
-      <option value='2'>Alternating addition and subtraction level2</option> \
-      <option value='3'>Alternating addition and subtraction level3</option> \
+      <option value='1'>Alternating addition and subtraction level 1</option> \
+      <option value='2'>Alternating addition and subtraction level 2</option> \
+      <option value='3'>Alternating addition and subtraction level 3</option> \
       <option value='4'>Count by</option> \
     </select>"
 

@@ -26,7 +26,7 @@ map<string, Topic*> topics{
 
 map<string, vector<int> > count_per_subject{
   {"addition", {12, 12, 12, 12, 12}},
-  {"subtraction", {12, 12, 12, 12, 12, 12 ,12, 12, 4}},
+  {"subtraction", {18, 12, 12, 12, 12, 12 ,12, 12, 4}},
   {"arithmetic", {12, 12, 12, 12, 10}},
   {"multiplication", {10, 1, 12, 12, 12, 12, 12, 12, 12, 12, 12}},
 };
