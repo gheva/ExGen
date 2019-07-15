@@ -25,8 +25,8 @@
     </script> \
 To generate exercises, select the subject and the level and hit submit \
     <br> \
-    <form id='generator_form' method='post'> \
-    <select id='subject' form='generator_form' required='required' \
+    <form id='generator_form' method='post' action='/sssss/gen.sl'> \
+    <select id='subject' name='subject' required='required' \
     onChange='showLevelSelector(this)'> \
       <option value='addition'>Easy Addition</option> \
       <option value='subtraction'>Easy Subtraction</option> \
@@ -34,25 +34,26 @@ To generate exercises, select the subject and the level and hit submit \
       <option value='multiplication'>Multiplication</option> \
     </select> \
     <br> \
-    <select class='level' id='addition_level' form='generator_form'> \
-      <option>very Easy Addition</option> \
-      <option>not so Easy Addition</option> \
-      <option>vaery hard Addition</option> \
+    <select class='level' id='addition_level' name='addition_level'> \
+      <option value='1'>very Easy Addition</option> \
+      <option value='2'>not so Easy Addition</option> \
+      <option value='3'>vaery hard Addition</option> \
     </select> \
-    <select class='level' id='subtraction_level' form='generator_form' style='display:none'> \
-      <option>very Easy Subtraction</option> \
-      <option>not so Easy Subtraction</option> \
+    <select class='level' id='subtraction_level' style='display:none' name='subtraction_level'> \
+      <option value='1'>very Easy Subtraction</option> \
+      <option value='2'>not so Easy Subtraction</option> \
     </select> \
-    <select class='level' id='arithmetics_level' form='generator_form' style='display:none'> \
-      <option>very Easy Arithmetic</option> \
-      <option>not so Easy Arithmetic</option> \
+    <select class='level' id='arithmetics_level' style='display:none' name='arithmetics_level'> \
+      <option value='1'>very Easy Arithmetic</option> \
+      <option value='2'>not so Easy Arithmetic</option> \
     </select> \
-    <select class='level' id='multiplication_level' form='generator_form' style='display:none'> \
-      <option>very Easy Multiplication</option> \
-      <option>not so Easy Multiplication</option> \
+    <select class='level' id='multiplication_level' style='display:none' name='multiplication_level'> \
+      <option value='1'>very Easy Multiplication</option> \
+      <option value='2'>not so Easy Multiplication</option> \
     </select> \
     <br> \
-    <input type='submit' value='Submit'> \
+    <input type='submit' value='Generate'> \
+    <br> \
     </form> \
   </body> \
 </html> \
